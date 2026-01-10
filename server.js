@@ -22,6 +22,10 @@ app.post("/siparis-geldi", async (req, res) => {
       console.log("❌ Line item yok");
       return res.sendStatus(200);
     }
+console.log("🧩 LINE ITEM PROPERTIES:");
+console.log(
+  JSON.stringify(order.line_items[0].properties, null, 2)
+);
 
     const designProp = order.line_items[0].properties?.find(
       (p) => p.name === "Design JSON"
