@@ -8,19 +8,45 @@ app.get("/", (req, res) => {
   res.send("Backend calisiyor ✅");
 });
 
-app.post("/siparis-geldi", (req, res) => {
+const sharp = require("sharp");
+
+app.post("/siparis-geldi", async (req, res) => {
   try {
     const order = req.body;
 
-    console.log("Siparis alindi:", order.id);
+    const designProp = order.line_items[0].properties
+      ?.find(p => p.name === "Design JSON");
 
-    fs.writeFileSync(
-      `ORDER_${order.id}.txt`,
-      JSON.stringify(order, null, 2)
-    );
+    if (!designProp) {
+      console.log("Tasarim bulunamadi");
+      return res.sendStatus(200);
+    }
 
-    console.log("Siparis dosyasi olusturuldu");
+    const design = JSON.parse(designProp.value);
+
+    const svg = `
+    <svg width="3000" height="3000" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100%" height="100%" fill="white"/>
+
+      <text
+        x="1500"
+        y="2700"
+        font-size="140"
+        text-anchor="middle"
+        font-family="Arial"
+        fill="black">
+        ${design.text || ""}
+      </text>
+    </svg>
+    `;
+
+    await sharp(Buffer.from(svg))
+      .png({ quality: 100 })
+      .toFile(\`ORDER_${order.id}.png\`);
+
+    console.log("PNG olustu:", order.id);
     res.sendStatus(200);
+
   } catch (err) {
     console.error(err);
     res.sendStatus(500);
