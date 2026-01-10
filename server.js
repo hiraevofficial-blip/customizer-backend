@@ -1,3 +1,8 @@
+app.post("/siparis-geldi", (req, res, next) => {
+  console.log("Webhook geldi ✅");
+  next();
+});
+
 const express = require("express");
 const sharp = require("sharp");
 
