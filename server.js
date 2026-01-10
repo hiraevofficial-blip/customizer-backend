@@ -3,6 +3,11 @@ const sharp = require("sharp");
 const fs = require("fs");
 
 const app = express();
+app.post("/test", (req, res) => {
+  console.log("✅ /test endpoint HIT");
+  res.send("OK");
+});
+
 app.use(express.json({ limit: "20mb" }));
 app.use(express.urlencoded({ extended: true }));
 
