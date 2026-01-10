@@ -1,7 +1,7 @@
 {
   "name": "customizer-backend",
   "version": "1.0.0",
-  "description": "Shopify Customizer Backend",
+  "private": true,
   "main": "server.js",
   "type": "commonjs",
   "scripts": {
