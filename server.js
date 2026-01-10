@@ -1,11 +1,3 @@
-const express = require("express");
-const app = express();
-
-app.get("/", (req, res) => {
-  res.send("Backend calisiyor");
-});
-
-app.listen(process.env.PORT || 3000);
 import express from "express";
 import fs from "fs";
 import { createCanvas } from "canvas";
