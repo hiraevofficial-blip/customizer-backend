@@ -1,3 +1,6 @@
+const multer = require("multer");
+const upload = multer({ storage: multer.memoryStorage() });
+const fetch = require("node-fetch");
 const express = require("express");
 const sharp = require("sharp");
 
