@@ -3,7 +3,11 @@ const sharp = require("sharp");
 const fs = require("fs");
 
 const app = express();
-app.use(express.json({ limit: "20mb" }));
+app.use(express.json({
+  limit: "20mb",
+  type: "*/*"
+}));
+
 
 // Test endpoint
 app.get("/", (req, res) => {
@@ -12,8 +16,8 @@ app.get("/", (req, res) => {
 
 // Shopify Order Webhook
 app.post("/siparis-geldi", async (req, res) => {
-  try {
-    console.log("🟢 SIPARIS GELDI");
+  console.log("🔥 /siparis-geldi HIT");
+  console.log("BODY KEYS:", Object.keys(req.body || {}));
 
 console.log("🧾 LINE ITEMS COUNT:", order.line_items.length);
 
