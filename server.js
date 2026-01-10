@@ -14,6 +14,11 @@ app.get("/", (req, res) => {
 app.post("/siparis-geldi", async (req, res) => {
   try {
     console.log("🟢 SIPARIS GELDI");
+    order.line_items.forEach((item, index) => {
+  console.log(`🧾 LINE ITEM ${index}`);
+  console.log(JSON.stringify(item, null, 2));
+});
+
     console.log(JSON.stringify(req.body, null, 2));
 
     const order = req.body;
