@@ -11,7 +11,7 @@
     "node": "18.x"
   },
   "dependencies": {
-    "express
+    "express": "^4.19.2",
     "sharp": "^0.33.3"
   }
 }
