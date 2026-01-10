@@ -14,10 +14,16 @@ app.get("/", (req, res) => {
 app.post("/siparis-geldi", async (req, res) => {
   try {
     console.log("🟢 SIPARIS GELDI");
-    order.line_items.forEach((item, index) => {
-  console.log(`🧾 LINE ITEM ${index}`);
-  console.log(JSON.stringify(item, null, 2));
+
+console.log("🧾 LINE ITEMS COUNT:", order.line_items.length);
+
+order.line_items.forEach((item, index) => {
+  console.log(`--- LINE ITEM ${index} ---`);
+  console.log("keys:", Object.keys(item));
+  console.log("properties:", item.properties);
 });
+
+console.log("📝 note_attributes:", order.note_attributes);
 
     console.log(JSON.stringify(req.body, null, 2));
 
