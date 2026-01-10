@@ -20,6 +20,11 @@ app.get("/", (req, res) => {
  * Shopify sipariş webhook'u
  * SVG -> PNG (300 DPI baskı)
  */
+console.log(
+  "LINE ITEMS:",
+  JSON.stringify(order.line_items, null, 2)
+);
+
 app.post("/siparis-geldi", async (req, res) => {
   try {
     const order = req.body;
