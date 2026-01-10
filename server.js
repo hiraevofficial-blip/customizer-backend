@@ -3,11 +3,8 @@ const sharp = require("sharp");
 const fs = require("fs");
 
 const app = express();
-app.use(express.json({
-  limit: "20mb",
-  type: "*/*"
-}));
-
+app.use(express.json({ limit: "20mb" }));
+app.use(express.urlencoded({ extended: true }));
 
 // Test endpoint
 app.get("/", (req, res) => {
