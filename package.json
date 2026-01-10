@@ -1,12 +1,17 @@
 {
   "name": "customizer-backend",
   "version": "1.0.0",
+  "description": "Shopify Customizer Backend",
   "main": "server.js",
+  "type": "commonjs",
   "scripts": {
     "start": "node server.js"
   },
+  "engines": {
+    "node": "18.x"
+  },
   "dependencies": {
-    "express": "^4.19.2"
- "sharp": "^0.33.3"
+    "express": "^4.19.2",
+    "sharp": "^0.33.3"
   }
 }
