@@ -2,10 +2,10 @@
   "name": "customizer-backend",
   "version": "1.0.0",
   "private": true,
-  "main": "server.js",
+  "main": "app.js",
   "type": "commonjs",
   "scripts": {
-    "start": "node server.js"
+    "start": "node app.js"
   },
   "engines": {
     "node": "18.x"
